@@ -23,7 +23,7 @@ WEBTHEME=default-darker </br>
 
 ## Configuration
 
-Execute the following command to deploy the pi-hole:
+Execute the following command to deploy the pi-hole: </br>
 ```docker-compose build``` </br>
 ```docker-compose --env-file .env up -d``` </br>
 
