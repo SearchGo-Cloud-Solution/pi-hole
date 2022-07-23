@@ -4,7 +4,7 @@ My DNS PI-HOLE
 
 ## Environment Variables
 
-Create a file called `.env` in the root directory of the project and add the following lines:
+Create a file called `.env` in the root directory of the project and add the following lines: </br>
 
 ***
 ADMIN_EMAIL=your_email </br>
