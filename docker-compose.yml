@@ -1,0 +1,35 @@
+version: "3"
+
+# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+services:
+  pihole:
+    container_name: pihole
+    build: ./
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      # - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - "80:80/tcp"
+      - "443:443/tcp"
+    environment:
+      ADMIN_EMAIL: 'junior5706@outlook.com'
+      DNS_BOGUS_PRIV: 'true'
+      DNS_FQDN_REQUIRED: 'true'
+      DNSMASQ_LISTENING: 'all'
+      DNSSEC: 'true'
+      IPv6: 'false'
+      PIHOLE_DNS_: '8.8.8.8;8.8.4.4;1.1.1.1;1.0.0.1;208.67.222.222;208.67.220.220'
+      TZ: 'America/Sao_Paulo'
+      WEBPASSWORD: 'uxpKFF4i37YuvAWNkNWF'
+      SERVERIP: '127.0.0.1'
+      VIRTUAL_HOST: 'pi-hole.jjconnect.net.br'
+      WEBTHEME: 'default-darker'
+    # Volumes store your data between container upgrades
+    volumes:
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    # cap_add:
+    #   - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    restart: unless-stopped
