@@ -4,6 +4,8 @@ version: "3"
 services:
   pihole:
     container_name: pihole
+    env_file:
+      - .env
     build: ./
     # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
     ports:
